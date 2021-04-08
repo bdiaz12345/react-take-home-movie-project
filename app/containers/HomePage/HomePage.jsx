@@ -57,11 +57,10 @@ const SearchDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15rem 2rem 2rem 2rem;
+  margin: 8rem 2rem 2rem 2rem;
 
   @media (max-width: 400px) {
     flex-direction: column;
-    margin-top: 10rem;
   }
 `
 
@@ -228,7 +227,7 @@ export function HomePage(props) {
           <Headline>{selectedReview.headline}</Headline>
           <Summary>{selectedReview.summary_short}</Summary>
           <Name>{selectedReview.byline}</Name>
-          <LinkToArticle href={link}>View Full Article</LinkToArticle>
+          <LinkToArticle href={link} target='_blank'>View Full Article</LinkToArticle>
         </InnerModal>
       </Modal>
       <Wrapper>

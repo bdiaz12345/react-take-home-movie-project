@@ -19,13 +19,18 @@ const TitleDiv = styled.div`
     width: 40%;
     height: 20%;
     background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media (max-width: 400px) {
         height: 30%
     }
 `
 
-const Button = styled.button``
+const TitleSubDiv = styled.div`
+
+`
 
 const Subtitle = styled.h6`
     text-align: center;
@@ -45,8 +50,10 @@ const AlternateHome = (props) => {
             props.setReviews(props.data)
         }}>
             <TitleDiv>
-                <Title>Movie Critic Reviews</Title>
-                <Subtitle>Click Anywhere</Subtitle>
+                <TitleSubDiv>
+                    <Title>Movie Critic Reviews</Title>
+                    <Subtitle>Click Anywhere</Subtitle>
+                </TitleSubDiv>
             </TitleDiv>
             <Particles 
               params={{
