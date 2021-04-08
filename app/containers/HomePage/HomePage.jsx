@@ -76,9 +76,11 @@ const FilterDiv = styled.div`
 const InnerModal = styled.div`
 `
 
-const Title = styled.h1``
+const Title = styled.h1`
+`
 
-const Image = styled.img``
+const Image = styled.img`
+`
 
 const Rating = styled.h4``
 
@@ -129,7 +131,11 @@ export function HomePage(props) {
   }
 
   useEffect(() => {
-    setCurrentData(reviews.slice(offset, offset + pageLimit))
+    if (input === '') {
+      setCurrentData(reviews.slice(offset, offset + pageLimit))
+    } else {
+      setCurrentData(reviews)
+    }
   }, [offset, reviews, pageLimit])
 
   function getReviews() {
@@ -145,8 +151,8 @@ export function HomePage(props) {
     const filtered = props.data.filter(review => {
       return review.display_title.toLowerCase().includes(input.toLowerCase())
     })
-    setInput(input)
     setReviews(filtered)
+    setInput(input)
     if (input === '' && selectedOption === 0) {
       setReviews(props.data)
     }

@@ -34,6 +34,7 @@ const CriticsPick = styled.h6`
 const Image = styled.img`
   width: 20rem;
   height: 30rem;
+  object-fit: cover;
 `
 
 const Bio = styled.p`

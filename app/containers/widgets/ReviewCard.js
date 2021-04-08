@@ -6,8 +6,8 @@ const Wrapper = styled.div`
     flex-direction: column;
     background: white;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
-    width: 20rem;
-    height: 30rem;
+    width: 15rem;
+    height: 22rem;
     margin: 2rem;
 
     &:hover {
@@ -20,7 +20,7 @@ const Image = styled.img`
 `
 
 const Title = styled.h4`
-    font-weight: bold;
+    font-size: 20px;
 `
 
 const Date = styled.p``
