@@ -32,6 +32,11 @@ const PaginationWrapper = styled.div`
   flex-flow: wrap;
   background: #01707a;
   justify-content: space-evenly;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const Button = styled.button`
