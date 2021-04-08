@@ -134,9 +134,10 @@ export function HomePage(props) {
     if (input === '') {
       setCurrentData(reviews.slice(offset, offset + pageLimit))
     } else {
-      setCurrentData(reviews.filter(review => {
+      let tempReviews = reviews.filter(review => {
         return review.display_title.toLowerCase().includes(input.toLowerCase())
-      }))
+      })
+      setCurrentData(tempReviews.slice(offset, offset + pageLimit))
     }
   }, [offset, reviews, pageLimit])
 
