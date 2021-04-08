@@ -53,6 +53,11 @@ const SearchDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin: 15rem 2rem 2rem 2rem;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    margin-top: 10rem;
+  }
 `
 
 const FilterBy = styled.p`
@@ -63,7 +68,8 @@ const FilterDiv = styled.div`
   margin: 2rem 0;
 `
 
-const InnerModal = styled.div``
+const InnerModal = styled.div`
+`
 
 const Title = styled.h1``
 
@@ -83,6 +89,7 @@ const LinkToArticle = styled.a``
 
 const styles = {
   content : {
+    width: '60%',
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -112,7 +119,6 @@ export function HomePage(props) {
 
   const customStyles = {
     control: () => ({
-      // none of react-select's styles are passed to <Control />
       width: 200,
     })
   }

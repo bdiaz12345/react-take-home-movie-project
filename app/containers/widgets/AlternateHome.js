@@ -19,6 +19,10 @@ const TitleDiv = styled.div`
     width: 40%;
     height: 20%;
     background: white;
+
+    @media (max-width: 400px) {
+        height: 30%
+    }
 `
 
 const Button = styled.button``
