@@ -117,6 +117,7 @@ export function HomePage(props) {
   const [offset, setOffset] = useState(0)
   const [currentPage, setCurrentPage] = useState({activePage: 1})
   const [currentData, setCurrentData] = useState([])
+  const [pastData, setPastData] = useState([])
   const [pageLimit, setPageLimit] = useState(20)
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedReview, setSelectedReview] = useState({})
@@ -133,7 +134,9 @@ export function HomePage(props) {
     if (input === '') {
       setCurrentData(reviews.slice(offset, offset + pageLimit))
     } else {
-      setCurrentData(reviews)
+      setCurrentData(reviews.filter(review => {
+        return review.display_title.toLowerCase().includes(input.toLowerCase())
+      }))
     }
   }, [offset, reviews, pageLimit])
 
