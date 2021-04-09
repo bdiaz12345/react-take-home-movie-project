@@ -9,7 +9,7 @@ import data from '../../../static/critics.json'
 import Navbar from '../widgets/Navbar'
 
 const Wrapper = styled.div`
-  background: white;
+  background: #f0f0f0;
 `
 
 const Card = styled.div`

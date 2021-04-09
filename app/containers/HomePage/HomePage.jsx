@@ -21,7 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const Wrapper = styled.div`
   display: flex;
   flex-flow: wrap;
-  background: white;
+  background: #f0f0f0;
   justify-content: space-evenly;
   min-height: 100vh;
 `
