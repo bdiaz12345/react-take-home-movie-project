@@ -5,29 +5,38 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     background: white;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
+    border: 1px solid #e7e7e7;
     width: 15rem;
     height: 22rem;
     margin: 2rem;
 
     &:hover {
         cursor: pointer;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
     }
 `
 
 const Image = styled.img`
     object-fit: cover;
+    height: 50%;
 `
 
 const Title = styled.h4`
     font-size: 20px;
+    text-align: center;
 `
 
-const Date = styled.p``
+const Date = styled.p`
+    text-align: center;
+`
 
-const MPAARating = styled.p``
+const MPAARating = styled.p`
+    text-align: center;
+`
 
-const CriticsPick = styled.p``
+const CriticsPick = styled.p`
+    text-align: center;
+`
 
 const ReviewCard = (props) => {
     const review = props.props
@@ -39,10 +48,10 @@ const ReviewCard = (props) => {
             props.setLink(review.link.url)
         }}>
             <Image src={review.multimedia.src} />
-            <Title>Title: {review.display_title}</Title>
-            <Date>Publication Date: {review.publication_date}</Date>
-            <MPAARating>MPAA Rating: {review.mpaa_rating}</MPAARating>
-            <CriticsPick>Critic's Pick: {review.critics_pick}</CriticsPick>
+            <Title>{review.display_title}</Title>
+            <Date>{review.publication_date}</Date>
+            <MPAARating>MPAA Rating: {review.mpaa_rating !== '' ? review.mpaa_rating : 'none'}</MPAARating>
+            <CriticsPick>Critic's Pick: {review.critics_pick === 1 ? 'Yes' : 'No'}</CriticsPick>
         </Wrapper>
     )
 }

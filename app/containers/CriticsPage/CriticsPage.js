@@ -9,26 +9,31 @@ import data from '../../../static/critics.json'
 import Navbar from '../widgets/Navbar'
 
 const Wrapper = styled.div`
-  background: #1faab7;
+  background: white;
 `
 
 const Card = styled.div`
-  width: 20rem;
+  width: 30rem;
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+
+  @media (max-width: 400px) {
+    width: 20rem;
+  }
 `
 
 const Name = styled.h4`
-  color: white;
+  text-align: center;
+
 `
 
 const Reviews = styled.h6`
-  color: white;
+  text-align: center;
 `
 
 const CriticsPick = styled.h6`
-  color: white;
+  text-align: center;
 `
 
 const Image = styled.img`
@@ -37,8 +42,13 @@ const Image = styled.img`
   object-fit: cover;
 `
 
+const ImageDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const Bio = styled.p`
-  color: white;
 `
 
 const CardWrapper = styled.div`
@@ -99,11 +109,13 @@ const CriticsPage = (props) => {
             findReviews(critic.display_name.toUpperCase())
             return (
                 <Card>
-                  <Image src={critic.multimedia !== null ? critic.multimedia.resource.src : 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'} />
+                  <ImageDiv>
+                    <Image src={critic.multimedia !== null ? critic.multimedia.resource.src : 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'} />
+                  </ImageDiv>
                   <Name>{critic.display_name}</Name>
                   <Reviews>Number of Reviews: {numberOfReviews}</Reviews>
                   <CriticsPick>Critic's Picks: {numberOfCriticsPicks}</CriticsPick>
-                  <Bio>Bio: {critic.bio}</Bio>
+                  <Bio>{critic.bio}</Bio>
                 </Card>
             )
           })}

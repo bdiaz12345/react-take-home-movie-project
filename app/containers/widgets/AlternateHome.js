@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    background: #1faab7;
+    background: #2211c5;
 `
 
 const TitleDiv = styled.div`
@@ -35,12 +35,12 @@ const TitleSubDiv = styled.div`
 const Subtitle = styled.h6`
     text-align: center;
     font-size: 15px;
-    color: #1faab7;
+    color: #2211c5;
 `
 
 const Title = styled.h1`
     text-align: center;
-    color: #1faab7;
+    color: #2211c5;
 `
 
 const AlternateHome = (props) => {

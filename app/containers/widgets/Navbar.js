@@ -8,7 +8,7 @@ const Wrapper = styled.div`
     justify-content: space-evenly;
     align-items: center;
     width: 100vw;
-    background: #01707a;
+    background: #2211c5;
 `
 
 const Title = styled.h1`

@@ -21,17 +21,19 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const Wrapper = styled.div`
   display: flex;
   flex-flow: wrap;
-  background: #1faab7;
+  background: white;
   justify-content: space-evenly;
   min-height: 100vh;
-  
 `
 
 const PaginationWrapper = styled.div`
   display: flex;
   flex-flow: wrap;
-  background: #01707a;
+  background: #2211c5;
   justify-content: space-evenly;
+  .pagination {
+    margin-top: 1rem;
+  }
 
   @media (max-width: 400px) {
     flex-direction: column;
@@ -40,14 +42,14 @@ const PaginationWrapper = styled.div`
 `
 
 const Button = styled.button`
-  background: #69cdd6;
+  background: #2211c5;
   color: white;
   transition: .25s ease-in-out;
   border: none;
 
   &:hover {
     background: white;
-    color: #69cdd6;
+    color: #2211c5;
     cursor: pointer;
   }
 `
@@ -65,7 +67,6 @@ const SearchDiv = styled.div`
 `
 
 const FilterBy = styled.p`
-  color: white;
 `
 
 const FilterDiv = styled.div`
@@ -220,7 +221,7 @@ export function HomePage(props) {
   ];
 
   return (
-    <div style={{background: '#69cdd6', height: '100vh'}}>
+    <div>
       {reviews.length || input.length ? <Navbar /> : console.log('nope')}
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={styles} contentLabel='Review'>
         <InnerModal>
@@ -257,6 +258,7 @@ export function HomePage(props) {
           setPageLimit(20)
         }}>Show 20</Button>
         <Pagination
+          className='pagination'
           itemClass='page-item'
           linkClass='page-link'
           totalItemsCount={reviews.length}
