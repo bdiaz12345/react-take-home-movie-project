@@ -151,6 +151,11 @@ export function HomePage(props) {
     setReviews(reviews)
   }, [pageLimit])
 
+  useEffect(() => {
+    setOffset(0)
+    setCurrentPage({activePage: 1})
+  }, [input])
+
   const updateInput = async (input) => {
     const filtered = props.data.filter(review => {
       return review.display_title.toLowerCase().includes(input.toLowerCase())
