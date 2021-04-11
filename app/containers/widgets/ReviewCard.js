@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+// JSX styles
+
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;

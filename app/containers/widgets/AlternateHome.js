@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 import Particles from 'react-particles-js'
 
+// JSX styles
+
 const Wrapper = styled.div`
     height: 100vh;
     display: flex;

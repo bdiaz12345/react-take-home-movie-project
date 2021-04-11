@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import Particles from 'react-particles-js'
+import { useHistory } from 'react-router-dom'
 
 import data from '../../../static/critics.json'
 
 import Navbar from '../widgets/Navbar'
+
+// JSX styles
 
 const Wrapper = styled.div`
   background: #f0f0f0;
@@ -61,26 +63,26 @@ const CardWrapper = styled.div`
 
 const CriticsPage = (props) => {
   const [critics, setCritics] = useState([])
-  const [reviews, setReviews] = useState([])
 
+  const history = useHistory()
+
+  // array for storing uppercase form of names to match "byline" 
+  // in reviews.
   const critic_names = []
 
   let numberOfReviews = 0
   let numberOfCriticsPicks = 0
 
+  // stores the uppercase form of critic names in the array above
   const algorithm = ()=>{
       for(let i in critics){
         critic_names.push(critics[i].display_name.toUpperCase())
       }
-      for(let i in critic_names){
-        const reviewer = data.map((item) =>{
-          if (item.byline === critic_names[i]) {
-            return item.byline
-          };;
-        });
-      }
   }
 
+  // compares names in reviews data and critics data, adding 
+  // to number of reviews and number of critic's picks if 
+  // they are critic's picks.
   const findReviews = (name) => {
     props.resources.reviews.data.forEach(review => {
       if (review.byline === name) {
@@ -92,9 +94,13 @@ const CriticsPage = (props) => {
     })
   }
 
+  // prevents the page from being displayed if there is no data to
+  // populate the critic's numbers.
   useEffect(() => {
     setCritics(data)
-    setReviews(props.resources.reviews.data)
+    if (props.resources.reviews.data.length === 0) {
+      history.push('/')
+    }
   }, [])
 
   return (

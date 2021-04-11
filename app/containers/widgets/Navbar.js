@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+// JSX styles
+
 const Wrapper = styled.div`
     position: fixed;
     display: flex;

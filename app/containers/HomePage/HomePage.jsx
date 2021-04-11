@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet' // Header Generator
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Switch, Route, useHistory } from 'react-router-dom'
-
-import hesImg from 'images/hes.png'
 import { getMovieReviews } from 'resources/reviews/reviews.actions'
 
 import styled from 'styled-components'
@@ -12,11 +8,12 @@ import ReviewCard from '../widgets/ReviewCard'
 import AlternateHome from '../widgets/AlternateHome'
 import Pagination from 'react-js-pagination'
 import SearchFilter from '../widgets/SearchFilter'
-import { update } from 'lodash'
 import Select from 'react-select'
 import  Modal from 'react-modal'
 import Navbar from '../widgets/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+// JSX styles
 
 const Wrapper = styled.div`
   display: flex;
@@ -94,6 +91,7 @@ const Name = styled.h4``
 
 const LinkToArticle = styled.a``
 
+// Modal Styles
 const styles = {
   content : {
     width: '60%',
@@ -110,27 +108,26 @@ Modal.setAppElement('#app')
 
 export function HomePage(props) {
   const [reviews, setReviews] = useState([])
-  const history = useHistory()
-
   const [input, setInput] = useState('')
   const [selectedOption, setSelectedOption] = useState({value: 0, label: ''})
- 
   const [offset, setOffset] = useState(0)
   const [currentPage, setCurrentPage] = useState({activePage: 1})
   const [currentData, setCurrentData] = useState([])
-  const [pastData, setPastData] = useState([])
   const [pageLimit, setPageLimit] = useState(20)
   const [modalIsOpen, setIsOpen] = useState(false)
   const [selectedReview, setSelectedReview] = useState({})
   const [image, setImage] = useState('')
   const [link, setLink] = useState('')
 
+  // react-select styles
   const customStyles = {
     control: () => ({
       width: 200,
     })
   }
 
+  // function that conditionally returns reviews based on user's input in the
+  // search bar, and page limit.
   useEffect(() => {
     if (input === '') {
       setCurrentData(reviews.slice(offset, offset + pageLimit))
@@ -146,16 +143,24 @@ export function HomePage(props) {
     return props.getMovieReviews()
   }
 
+  // action called
   useEffect(() => {
     getReviews()
     setReviews(reviews)
   }, [pageLimit])
 
+  // prevents application from only searching from within the active page.
+  // Instead, sets the results to be returned based on the user's input in the
+  // search bar. 
   useEffect(() => {
     setOffset(0)
     setCurrentPage({activePage: 1})
   }, [input])
 
+  // depending on the user's input in the search bar, return reviews. 
+  // Each keystroke updates reviews in real time. However, if the 
+  // user clears the search bar and removes a filter, reviews
+  // returns back to its original state.
   const updateInput = async (input) => {
     const filtered = props.data.filter(review => {
       return review.display_title.toLowerCase().includes(input.toLowerCase())
@@ -167,6 +172,8 @@ export function HomePage(props) {
     }
   }
 
+  // ensures that filter is applied as reviews change,
+  // which is usually as the user types in the search bar.
   useEffect(() => {
     if (selectedOption.value === 1) {
       setReviews(reviews.filter(review => {
@@ -187,6 +194,8 @@ export function HomePage(props) {
     onFilter()
   }, [selectedOption])
 
+  // sets reviews to appropriate state depending on user's
+  // filter choice
   const onFilter = () => {
     if (selectedOption.value === 1) {
       setReviews(props.data.filter(review => {
@@ -205,11 +214,15 @@ export function HomePage(props) {
     }
   }
 
+  // because this sets offset to a new value, reviews are 
+  // updated because of a useEffect above, to the reviews
+  // of that selected page.
   const handlePageChange = (pageNumber) => {
     setOffset(pageLimit * (pageNumber - 1))
     setCurrentPage({activePage: pageNumber})
   }
 
+  // Modal functionality
   function openModal() {
     setIsOpen(true);
   }
@@ -218,6 +231,7 @@ export function HomePage(props) {
     setIsOpen(false);
   }
 
+  // filter options
   const options = [
     { value: 0, label: '' },
     { value: 1, label: 'MPAA Rating' },
